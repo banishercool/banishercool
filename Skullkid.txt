@@ -1,0 +1,549 @@
+game:GetService("StarterGui"):SetCore("SendNotification", { 
+	Title = "Melon's (FE) Scripts";
+	Text = "Loading, enjoy!";
+	Icon = "rbxthumb://type=Asset&id=7969699183&w=150&h=150"})
+Duration = 16;
+wait(0)
+HumanDied = false
+local CountSCIFIMOVIELOL = 1
+function SCIFIMOVIELOL(Part0,Part1,Position,Angle)
+	local AlignPos = Instance.new('AlignPosition', Part1); AlignPos.Name = "AliP_"..CountSCIFIMOVIELOL
+	AlignPos.ApplyAtCenterOfMass = true;
+	AlignPos.MaxForce = 5772000--67752;
+	AlignPos.MaxVelocity = math.huge/9e110;
+	AlignPos.ReactionForceEnabled = false;
+	AlignPos.Responsiveness = 200;
+	AlignPos.RigidityEnabled = false;
+	local AlignOri = Instance.new('AlignOrientation', Part1); AlignOri.Name = "AliO_"..CountSCIFIMOVIELOL
+	AlignOri.MaxAngularVelocity = math.huge/9e110;
+	AlignOri.MaxTorque = 5772000
+	AlignOri.PrimaryAxisOnly = false;
+	AlignOri.ReactionTorqueEnabled = false;
+	AlignOri.Responsiveness = 200;
+	AlignOri.RigidityEnabled = false;
+	local AttachmentA=Instance.new('Attachment',Part1); AttachmentA.Name = "Ath_"..CountSCIFIMOVIELOL
+	local AttachmentB=Instance.new('Attachment',Part0); AttachmentB.Name = "Ath_"..CountSCIFIMOVIELOL
+	AttachmentA.Orientation = Angle or Vector3.new(0,0,0)
+	AttachmentA.Position = Position or Vector3.new(0,0,0)
+	AlignPos.Attachment1 = AttachmentA;
+	AlignPos.Attachment0 = AttachmentB;
+	AlignOri.Attachment1 = AttachmentA;
+	AlignOri.Attachment0 = AttachmentB;
+	CountSCIFIMOVIELOL = CountSCIFIMOVIELOL + 1
+	return {AlignPos,AlignOri,AttachmentA,AttachmentB}
+end
+
+if _G.netted ~= true then
+	_G.netted = true
+	coroutine.wrap(function()
+		settings().Physics.PhysicsEnvironmentalThrottle = Enum.EnviromentalPhysicsThrottle.Disabled
+		settings().Physics.AllowSleep = false
+		game:GetService("RunService").RenderStepped:Connect(function()
+			game:FindFirstChildOfClass("Players").LocalPlayer.MaximumSimulationRadius=math.pow(math.huge,math.huge)
+			sethiddenproperty(game:FindFirstChildOfClass("Players").LocalPlayer,"SimulationRadius",math.huge*math.huge)
+		end)
+	end)()
+end
+
+game:FindFirstChildOfClass("Players").LocalPlayer["Character"].Archivable = true
+local hatnameclone = {}
+for _,v in next, game:FindFirstChildOfClass("Players").LocalPlayer["Character"]:GetChildren() do
+	if v:IsA("Accessory") then
+		if hatnameclone[v.Name] then
+			if hatnameclone[v.Name] == "s" then
+				hatnameclone[v.Name] = {}
+			end
+			table.insert(hatnameclone[v.Name],v)
+		else
+			hatnameclone[v.Name] = "s"
+		end
+	end
+end
+for _,v in pairs(hatnameclone) do
+	if type(v) == "table" then
+		local num = 1
+		for _,w in pairs(v) do
+			w.Name = w.Name..num
+			num = num + 1
+		end
+	end
+end
+hatnameclone = nil
+
+local DeadChar = game:FindFirstChildOfClass("Players").LocalPlayer.Character
+
+local fldr = Instance.new("Folder",game:FindFirstChildOfClass("Players").LocalPlayer["Character"])
+fldr.Name = "DMYF"
+local CloneChar = DeadChar:Clone()
+local ANIMATIONHERE
+if CloneChar:FindFirstChild("Animate") then
+	ANIMATIONHERE = CloneChar:FindFirstChild("Animate"):Clone()
+	CloneChar:FindFirstChild("Animate"):Destroy()
+end
+if CloneChar:FindFirstChildOfClass("Folder") then CloneChar:FindFirstChildOfClass("Folder"):Destroy() end
+if CloneChar.Torso:FindFirstChild("Neck") then
+	local Clonessss = CloneChar.Torso:FindFirstChild("Neck"):Clone()
+	Clonessss.Part0 = nil
+	Clonessss.Part1 = DeadChar.Head
+	Clonessss.Parent = DeadChar.Torso
+end
+CloneChar.Parent = fldr
+CloneChar.HumanoidRootPart.CFrame = DeadChar.HumanoidRootPart.CFrame
+CloneChar.Humanoid.BreakJointsOnDeath = false
+CloneChar.Name = "non"
+CloneChar.Humanoid.DisplayDistanceType = "None"
+
+for _,v in next, DeadChar:GetChildren() do
+	if v:IsA("Accessory") then
+		local topacc = false
+		if v.Handle:FindFirstChildOfClass("Weld") then v.Handle:FindFirstChildOfClass("Weld"):Destroy() end
+		v.Handle.Massless = true
+		v.Handle.CanCollide = false
+		if v.Handle:FindFirstChildOfClass("Attachment") then
+			local ath__ = v.Handle:FindFirstChildOfClass("Attachment")
+			if ath__.Name == "HatAttachment" or ath__.Name == "HairAttachment" or ath__.Name == "FaceFrontAttachment" or ath__.Name == "FaceCenterAttachment" then
+				topacc = ath__.Name
+			end
+		end
+        local bv = Instance.new("BodyVelocity",v.Handle)
+		bv.Velocity = Vector3.new(0,0,0)
+		coroutine.wrap(function()
+			if topacc then
+				local allthings = SCIFIMOVIELOL(v.Handle,DeadChar.Torso,Vector3.new(0,1.5,0)+ (DeadChar.Head[topacc].Position + (v.Handle[topacc].Position*-1)),Vector3.new(0,0,0))
+				local normaltop = allthings[1].Attachment1
+				local alipos = allthings[1]
+				local alirot = allthings[2]
+				local p0 = v.Handle
+				local p1 = DeadChar.Head
+				alipos.Parent = CloneChar:FindFirstChild(v.Name).Handle
+				alirot.Parent = CloneChar:FindFirstChild(v.Name).Handle
+				while true do
+					game:GetService("RunService").RenderStepped:wait()
+					if HumanDied then break end
+					coroutine.wrap(function()
+						if alipos.Attachment1 == normaltop then
+							p0.CFrame = p0.CFrame:lerp((((DeadChar.Torso.CFrame * CFrame.new(0,1.5,0)) * p1[topacc].CFrame) * p0[topacc].CFrame:inverse()),1)
+						else
+							v.Handle.CFrame = v.Handle.CFrame:lerp(alipos.Attachment1.Parent.CFrame * CFrame.new(alipos.Attachment1.Position) * CFrame.Angles(math.rad(alipos.Attachment1.Rotation.X),math.rad(alipos.Attachment1.Rotation.Y),math.rad(alipos.Attachment1.Rotation.Z)),1)
+						end
+					end)()
+				end
+			else
+				SCIFIMOVIELOL(v.Handle,CloneChar[v.Name].Handle,Vector3.new(0,0,0),Vector3.new(0,0,0))
+			end
+		end)()
+    end
+end
+
+local a = DeadChar.Torso
+local b = DeadChar.HumanoidRootPart
+local c = DeadChar.Humanoid
+a.Parent = game:FindFirstChildOfClass("Workspace")
+c.Parent = game:FindFirstChildOfClass("Workspace")
+local told = a:Clone()
+local told1 = c:Clone()
+b["RootJoint"].Part0 = told
+b["RootJoint"].Part1 = DeadChar.Head
+a.Name = "torso"
+a.Neck:Destroy()
+c.Name = "Mizt Hub Best"
+told.Parent = DeadChar
+told1.Parent = DeadChar
+DeadChar.PrimaryPart = told
+told1.Health = 0
+b:Destroy()
+a.Parent = DeadChar
+c.Parent = DeadChar
+told:Destroy()
+told1:Destroy()
+a.Name = "Torso"
+
+if CloneChar.Head:FindFirstChildOfClass("Decal") then CloneChar.Head:FindFirstChildOfClass("Decal").Transparency = 1 end
+if DeadChar:FindFirstChild("Animate") then DeadChar:FindFirstChild("Animate"):Destroy() end
+
+local Collider
+function UnCollide()
+    if HumanDied then Collider:Disconnect(); return end
+    --[[for _,Parts in next, CloneChar:GetChildren() do
+        if Parts:IsA("BasePart") then
+            Parts.CanCollide = false 
+        end 
+    end]]
+    for _,Parts in next, DeadChar:GetChildren() do
+        if Parts:IsA("BasePart") then
+        Parts.CanCollide = false
+        end 
+    end 
+end
+Collider = game:GetService("RunService").Stepped:Connect(UnCollide)
+
+local resetBindable = Instance.new("BindableEvent")
+resetBindable.Event:connect(function()
+    game:GetService("StarterGui"):SetCore("ResetButtonCallback", true)
+	resetBindable:Destroy()
+	HumanDied = true
+    pcall(function()
+		game:FindFirstChildOfClass("Players").LocalPlayer.Character = DeadChar
+		DeadChar.Head:Destroy()
+		DeadChar:FindFirstChildOfClass("Humanoid"):Destroy()
+		game:FindFirstChildOfClass("Players").LocalPlayer.Character = CloneChar
+		if DeadChar:FindFirstChildOfClass("Folder") then DeadChar:FindFirstChildOfClass("Folder"):Destroy() end
+	end)
+end)
+game:GetService("StarterGui"):SetCore("ResetButtonCallback", resetBindable)
+
+coroutine.wrap(function()
+    while true do
+        game:GetService("RunService").RenderStepped:wait()
+        if not CloneChar or not CloneChar:FindFirstChild("Head") or not CloneChar:FindFirstChildOfClass("Humanoid") or CloneChar:FindFirstChildOfClass("Humanoid").Health <= 0 and not DeadChar or not DeadChar:FindFirstChild("Head") or not DeadChar:FindFirstChildOfClass("Humanoid") or DeadChar:FindFirstChildOfClass("Humanoid").Health <= 0 then 
+            HumanDied = true
+            pcall(function()
+				game:FindFirstChildOfClass("Players").LocalPlayer.Character = DeadChar
+				DeadChar.Head:Destroy()
+				DeadChar:FindFirstChildOfClass("Humanoid"):Destroy()
+				game:FindFirstChildOfClass("Players").LocalPlayer.Character = CloneChar
+				if DeadChar:FindFirstChildOfClass("Folder") then DeadChar:FindFirstChildOfClass("Folder"):Destroy() end
+			end)
+            if resetBindable then
+                game:GetService("StarterGui"):SetCore("ResetButtonCallback", true)
+                resetBindable:Destroy()
+            end
+            break
+        end		
+    end
+end)()
+
+
+SCIFIMOVIELOL(DeadChar["Head"],CloneChar["Head"])
+SCIFIMOVIELOL(DeadChar["Torso"],CloneChar["Torso"])
+SCIFIMOVIELOL(DeadChar["Left Arm"],CloneChar["Left Arm"])
+SCIFIMOVIELOL(DeadChar["Right Arm"],CloneChar["Right Arm"])
+SCIFIMOVIELOL(DeadChar["Left Leg"],CloneChar["Left Leg"])
+SCIFIMOVIELOL(DeadChar["Right Leg"],CloneChar["Right Leg"])
+
+for _,v in pairs(DeadChar:GetChildren()) do
+	if v:IsA("BasePart") and v.Name ~= "Head" then
+		--[[local bv = Instance.new("BodyVelocity",v)
+		bv.Velocity = Vector3.new(0,0,0)
+		coroutine.wrap(function()
+			while true do
+				game:GetService("RunService").RenderStepped:wait()
+				if HumanDied then break end
+				v.CFrame = CloneChar[v.Name].CFrame
+			end
+		end)()]]
+	elseif v:IsA("BasePart") and v.Name == "Head" then
+		local bv = Instance.new("BodyVelocity",v)
+		bv.Velocity = Vector3.new(0,0,0)
+		coroutine.wrap(function()
+			while true do
+				game:GetService("RunService").RenderStepped:wait()
+				if HumanDied then break end
+				v.CFrame = DeadChar.Torso.CFrame * CFrame.new(0,1.5,0)
+			end
+		end)()
+	end
+end
+
+for _,BodyParts in next, CloneChar:GetDescendants() do
+if BodyParts:IsA("BasePart") or BodyParts:IsA("Part") then
+BodyParts.Transparency = 1 end end
+game:GetService("RunService").RenderStepped:wait()
+game:FindFirstChildOfClass("Players").LocalPlayer.Character = CloneChar
+game:FindFirstChildOfClass("Workspace"):FindFirstChildOfClass("Camera").CameraSubject = CloneChar.Humanoid
+
+for _,v in next, DeadChar:GetChildren() do
+	if v:IsA("Accessory") then
+		if v.Handle:FindFirstChildOfClass("Weld") then v.Handle:FindFirstChildOfClass("Weld"):Destroy() end
+	end
+end
+
+if ANIMATIONHERE then ANIMATIONHERE.Parent = CloneChar end
+
+wait(0)
+
+local Player = game:GetService("Players"). LocalPlayer   
+
+--[[
+___  ___      _                 _      ___  ___          _    
+|  \/  |     (_)               ( )     |  \/  |         | |   
+| .  . | __ _ _  ___  _ __ __ _|/ ___  | .  . | __ _ ___| | __
+| |\/| |/ _` | |/ _ \| '__/ _` | / __| | |\/| |/ _` / __| |/ /
+| |  | | (_| | | (_) | | | (_| | \__ \ | |  | | (_| \__ \   < 
+\_|  |_/\__,_| |\___/|_|  \__,_| |___/ \_|  |_/\__,_|___/_|\_\
+            _/ |                                              
+           |__/                                               
+ _____ _          _ _   _   ___     _                         
+/  ___| |        | | | | | / (_)   | |                        
+\ `--.| | ___   _| | | | |/ / _  __| |                        
+ `--. \ |/ / | | | | | |    \| |/ _` |                        
+/\__/ /   <| |_| | | | | |\  \ | (_| |                        
+\____/|_|\_\\__,_|_|_| \_| \_/_|\__,_|                                                                                                                                                                   
+--]] 
+
+--{Majora's Mask: Skull Kid}--
+--{This is actually from Hyrule Warriors}--
+--Made by Zalgo_exe/Kunoleo/SlenderMan2095 (They're all my usernames)
+--Note: If you somehow got this script and leak it, I will get seriously pissed. (Maybe.. just credit me ok? Then it'll be fine.)
+-- Converted and fixed by Melon
+warn("Loading Script")
+wait(0.2)
+intro = true
+sine = 0
+change = 1
+sprint=true
+local Player, Character  = game:service("Players").LocalPlayer, game:GetService("Players").LocalPlayer.Character, game:GetService("Players").LocalPlayer:GetMouse();
+local Torso = Character:FindFirstChild("Torso")
+local rootPart = Character:FindFirstChild("HumanoidRootPart")
+local Humanoid = Character:FindFirstChild("Humanoid")
+local Head = Character:FindFirstChild("Head")
+local Right_Arm = Character:FindFirstChild("Right Arm")
+local Left_Arm = Character:FindFirstChild("Left Arm")
+local Right_Leg = Character:FindFirstChild("Right Leg")
+local Left_Leg = Character:FindFirstChild("Left Leg")
+local Right_Shoulder = Torso:FindFirstChild("Right Shoulder")
+local Left_Shoulder = Torso:FindFirstChild("Left Shoulder")
+local Right_Hip = Torso:FindFirstChild("Right Hip")
+local Left_Hip = Torso:FindFirstChild("Left Hip")
+local Neck = Torso:FindFirstChild("Neck")
+local rootPart = Character:FindFirstChild("HumanoidRootPart")
+local rootJoint = rootPart:FindFirstChild("RootJoint")
+local CurrentIdle = "Idling1"
+local Degree = 0.0175438596491228
+local canremove = false
+local debounce = false
+local UIService=game:GetService'UserInputService'
+_G.SongName = math.random(1,9025232)
+sin = math.sin
+Right_Leg.FormFactor 		= "Custom";
+Left_Leg.FormFactor			= "Custom";
+rootPart.Archivable 		= true;
+rootJoint.Archivable 		= true;
+c_new						= CFrame.new;
+c_angles					= CFrame.Angles;
+i_new = Instance.new
+Humanoid:ClearAllChildren();
+local isAttacking = false
+local isSprinting = false
+local Animations = false
+local Angle = 0
+local Axis = 0
+local angleSpeed = 1
+local axisSpeed = angleSpeed
+local currentAnim
+local levetatingheight = 3
+local WalkType = "Ground"
+
+Humanoid.MaxHealth = 1000
+Humanoid.Health = Humanoid.MaxHealth
+
+Theme = Instance.new("Sound")
+Theme.Parent = Character.Torso
+Theme.SoundId = "rbxassetid://269366083"
+Theme.Volume = 9.6
+Theme.Looped = true
+Theme.Pitch = 1
+Theme:Play()
+
+function swait(num)
+	if num == 0 or num == nil then
+		game:GetService("RunService").Stepped:wait(0)
+	else
+		for i = 0, num do
+			game:GetService("RunService").Stepped:wait(0)
+		end
+	end
+end
+
+for i,v in pairs(Character:GetChildren()) do
+	if v:IsA('ShirtGraphic')  then
+		v:Destroy()
+	end
+end
+
+for i,v in pairs(Character:GetChildren()) do
+	if v:IsA('CharacterMesh') then
+		v:Destroy()
+	end
+end
+
+for i,v in pairs(Character:GetChildren()) do
+	if v:IsA('Accoutrement') or v:IsA('Shirt') or v:IsA('Pants') then
+		v:Destroy()
+	elseif v:IsA('Part') and v.Name=='Head' then
+		v.face:Destroy()
+	end
+end
+
+
+Character['Body Colors'].HeadColor=BrickColor.new('Reddish brown')
+Character['Body Colors'].TorsoColor=BrickColor.new('Reddish brown')
+Character['Body Colors'].RightArmColor=BrickColor.new('Reddish brown')
+Character['Body Colors'].LeftArmColor=BrickColor.new('Reddish brown')
+Character['Body Colors'].RightLegColor=BrickColor.new('Reddish brown')
+Character['Body Colors'].LeftLegColor=BrickColor.new('Reddish brown')
+
+shirt = Instance.new("Shirt",Character)
+pants = Instance.new("Pants",Character)
+shirt.ShirtTemplate = "rbxassetid://18622157"
+pants.PantsTemplate = "rbxassetid://18616286"
+
+Humanoid.DisplayDistanceType='None'
+
+Head.Transparency = 1
+local _Head = Instance.new("Part",Head)
+_Head.Name = "_Head"
+_Head.Shape = Enum.PartType.Block
+_Head.CanCollide = false
+_Head.BrickColor = BrickColor.new("Reddish brown")
+_Head.Transparency = 0
+_Head.Material = "Wood"
+_Head.Size = Vector3.new(1.5, 1.5, 1.5)
+_Head.TopSurface = Enum.SurfaceType.Smooth
+_Head.BottomSurface = Enum.SurfaceType.Smooth	local Weld = Instance.new("Weld", _Head)
+Weld.Part0 = Head
+Weld.Part1 = _Head
+Weld.C1 = CFrame.new(0,-0.15,0)
+_HeadMesh = Instance.new("SpecialMesh",_Head)
+_HeadMesh.MeshType = "Sphere"
+_HeadMesh.Scale = Vector3.new(1,1,1)
+
+local Tael = Instance.new("Part",Character)
+Tael.Name = "Tael"
+Tael.Shape = Enum.PartType.Block
+Tael.CanCollide = false
+Tael.BrickColor = BrickColor.new("Dark indigo")
+Tael.Transparency = 0
+Tael.Material = "Neon"
+Tael.Size = Vector3.new(0.5, 0.5, 0.5)
+Tael.TopSurface = Enum.SurfaceType.Smooth
+Tael.BottomSurface = Enum.SurfaceType.Smooth	
+local Tael2 = Instance.new("Weld", Tael)
+Tael2.Part0 = rootPart
+Tael2.Part1 = Tael
+Tael2.C1 = CFrame.new(0,-5,3.5)
+Mesh = Instance.new("SpecialMesh",Tael)
+Mesh.MeshType = "Sphere"
+Mesh.Scale = Vector3.new(1,1,1)
+
+local Tatl = Instance.new("Part",Character)
+Tatl.Name = "Tatl"
+Tatl.Shape = Enum.PartType.Block
+Tatl.CanCollide = false
+Tatl.BrickColor = BrickColor.new("New Yeller")
+Tatl.Transparency = 0
+Tatl.Material = "Neon"
+Tatl.Size = Vector3.new(0.5, 0.5, 0.5)
+Tatl.TopSurface = Enum.SurfaceType.Smooth
+Tatl.BottomSurface = Enum.SurfaceType.Smooth	
+local Tatl2 = Instance.new("Weld", Tatl)
+Tatl2.Part0 = rootPart
+Tatl2.Part1 = Tatl
+Tatl2.C1 = CFrame.new(0,-2,3.5)
+Mesh = Instance.new("SpecialMesh",Tatl)
+Mesh.MeshType = "Sphere"
+Mesh.Scale = Vector3.new(1,1,1)
+
+
+GUI = Instance.new("BillboardGui",Tael)
+GUI.Size = UDim2.new(1.3,0,1,0)
+GUI.MaxDistance = "inf"
+GUI.ExtentsOffset = Vector3.new(0,0.1,0)
+
+Wings = Instance.new("ImageLabel",GUI)
+Wings.Position = UDim2.new(0,0,0,0)
+Wings.Image = "rbxassetid://1345656252"
+Wings.BackgroundTransparency = 1
+Wings.Size = UDim2.new(1,0,1,0)
+
+GUI2 = Instance.new("BillboardGui",Tatl)
+GUI2.Size = UDim2.new(1.3,0,1,0)
+GUI2.MaxDistance = "inf"
+GUI2.ExtentsOffset = Vector3.new(0,0.1,0)
+
+Wings2 = Instance.new("ImageLabel",GUI2)
+Wings2.Position = UDim2.new(0,0,0,0)
+Wings2.Image = "rbxassetid://1345656252"
+Wings2.BackgroundTransparency = 1
+Wings2.Size = UDim2.new(1,0,1,0)
+
+coroutine.wrap(function()
+while true do
+for i = 1,5 do
+GUI.Size = GUI.Size - UDim2.new(0.1,0,0,0)
+GUI2.Size = GUI2.Size - UDim2.new(0.1,0,0,0)
+swait()
+end
+for i = 1,5 do
+GUI.Size = GUI.Size + UDim2.new(0.1,0,0,0)
+GUI2.Size = GUI2.Size + UDim2.new(0.1,0,0,0)
+swait()
+end
+end
+end)()
+
+
+atch0 = Instance.new("Attachment",Tatl)
+atch0.Position = Vector3.new(0,0,Tatl.Size.Z/2)
+atch1 = Instance.new("Attachment",Tatl)
+atch1.Position = Vector3.new(0,0,-Tatl.Size.Z/2)
+trail = Instance.new("Trail",Tatl)
+trail.Attachment0 = atch0
+trail.Attachment1 = atch1
+trail.Lifetime = 0.2
+trail.Enabled = true
+trail.LightEmission = 1
+trail.LightInfluence = 0
+trail.FaceCamera = true
+trail.WidthScale = NumberSequence.new({NumberSequenceKeypoint.new(0,1),NumberSequenceKeypoint.new(1,0)})
+trail.Color = ColorSequence.new(Color3.new(1,1,0))
+trail.Transparency = NumberSequence.new(0,1)
+
+atch2 = Instance.new("Attachment",Tael)
+atch2.Position = Vector3.new(0,0,Tael.Size.Z/2)
+atch3 = Instance.new("Attachment",Tael)
+atch3.Position = Vector3.new(0,0,-Tael.Size.Z/2)
+trail2 = Instance.new("Trail",Tael)
+trail2.Attachment0 = atch2
+trail2.Attachment1 = atch3
+trail2.Lifetime = 0.2
+trail2.Enabled = true
+trail2.LightEmission = 1
+trail2.LightInfluence = 0
+trail2.FaceCamera = true
+trail2.WidthScale = NumberSequence.new({NumberSequenceKeypoint.new(0,1),NumberSequenceKeypoint.new(1,0)})
+trail2.Color = ColorSequence.new(Color3.fromRGB(61, 21, 133))
+trail2.Transparency = NumberSequence.new(0,1)
+
+Twinkles=Instance.new('ParticleEmitter',Tael)
+Twinkles.Color = ColorSequence.new(Color3.fromRGB(61, 21, 133))
+Twinkles.LightEmission=1
+Twinkles.Texture='rbxassetid://187012669'
+Twinkles.Size=NumberSequence.new({NumberSequenceKeypoint.new(0, 0.05, 0), NumberSequenceKeypoint.new(1, 0, 0)})
+Twinkles.EmissionDirection='Back'
+Twinkles.Lifetime = NumberRange.new(0.5)
+Twinkles.Rate = 10
+Twinkles.SpreadAngle=Vector2.new(-90,90)
+
+Twinkles=Instance.new('ParticleEmitter',Tatl)
+Twinkles.Color = ColorSequence.new(Color3.fromRGB(255, 255, 0))
+Twinkles.LightEmission=1
+Twinkles.Texture='rbxassetid://187012669'
+Twinkles.Size=NumberSequence.new({NumberSequenceKeypoint.new(0, 0.05, 0), NumberSequenceKeypoint.new(1, 0, 0)})
+Twinkles.EmissionDirection='Back'
+Twinkles.Lifetime = NumberRange.new(0.5)
+Twinkles.Rate = 10
+Twinkles.SpreadAngle=Vector2.new(-90,90)
+
+local Particle = Instance.new("ParticleEmitter",Tael)
+Particle.Enabled = true
+Particle.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0,1),NumberSequenceKeypoint.new(0.3,0.95),NumberSequenceKeypoint.new(1,1)})
+Particle.LightEmission = 1
+Particle.Rate = 2000
+Particle.ZOffset = 1
+Particle.Lifetime = NumberRange.new(0.5)
+Particle.Speed = NumberRange.new(1)
+Particle.Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.5, 0.3), NumberSequenceKeypoint.new(1, 1, 0.1)})
+Particle.Rotation = NumberRange.new(-180, 180)
+Particle.RotSpeed = NumberRange.new(-180, 180)
+Particle.Texture = "http://www.roblox.com/asset/?id=303194966"
