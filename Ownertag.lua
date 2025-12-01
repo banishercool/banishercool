@@ -1,7 +1,7 @@
 local Players = game:GetService("Players")
 
 local TAG_NAME = "ScriptOwnerTag"
-local TARGET_USERNAMES = { "Theo_TheoBenzo", "Theo_TheoBenzo", "ITS_MEBRU123" } -- Add more here
+local TARGET_USERNAMES = { "Theo_TheoBenzo", "Theo_TheoBenzo", "ITS_MEBRU123", "please_flyflywjcy" } -- Add more here
 local CHECK_INTERVAL = 2
 
 local TargetLookup = {}
