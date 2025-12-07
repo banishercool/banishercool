@@ -368,7 +368,7 @@ local tf = 0
 local allowframeloss = false
 local tossremainder = false
 local lastframe = tick()
-local frame = 1/60
+local frame = 1/1000
 Player.Heartbeat:Fire()
 
 game:GetService("RunService").Heartbeat:connect(function(s, p)
@@ -444,7 +444,7 @@ local Module = (function()
 	local allowframeloss = false
 	local tossremainder = false
 	local lastframe = tick()
-	local frame = 1/60
+	local frame = 1/1000
 	ArtificialHB:Fire()
 
 	game:GetService("RunService").Heartbeat:connect(function(s, p)
