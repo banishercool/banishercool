@@ -1,11 +1,11 @@
---hat needed: https://www.roblox.com/catalog/5410674378/METAL-x-LIGHTSEER-77
+--hat needed: https://www.roblox.com/catalog/106870103192455/Cyber-Sniper-Spec-Ops-Snow-Camo-GLOWS-IN-GAME
 --// SETTINGS \\ --
 
 local Fling = true --// Recommended: true
 local FlingBlockInvisible = false --// Recommended: false (So you can see the flinging block)
 local HighlightFlingBlock = false --// Recommended: true
 local FlingHighlightColor = Color3.fromRGB(55,55,255) --// First is R, Second is G, Third is B
-local GunHatId =  -- // (https://www.roblox.com/catalog/5410674378/METAL-x-LIGHTSEER-77)
+local GunHatId =  -- // (https://www.roblox.com/catalog/106870103192455/Cyber-Sniper-Spec-Ops-Snow-Camo-GLOWS-IN-GAME)
 --// GunHatId is the HatId you will use as the gun for the script, you must have the hat equipped.
 
 
