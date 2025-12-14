@@ -1,28 +1,4 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Solary-3/Scripts/refs/heads/main/Tag"))()
-end))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 --//Options
 local Global=(getgenv and getgenv()) or shared
 local CAMERAFOCUS="BestFittingBlack"  -- Actual Accessory name
