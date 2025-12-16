@@ -1,4 +1,4 @@
-local stop=true 
+local stop=false 
 local function notify(text,dur)
 local Notify=game:GetService("StarterGui")
 Notify:SetCore("SendNotification",{
