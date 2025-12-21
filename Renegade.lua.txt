@@ -54,7 +54,7 @@ if stop then return end
 --//Options
 local Global=(getgenv and getgenv()) or shared
 local CAMERAFOCUS="BestFittingBlack"  -- Actual Accessory name
-local INTROANIM=false -- set it to true if want an intro animation
+local INTROANIM=true -- set it to true if want an intro animation
 local LEGACY=false -- set this to true if you the old anims on some modes
 
 
