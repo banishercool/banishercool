@@ -1020,7 +1020,7 @@ local Modes={
   {Name="Chromatic",WingAnim="Chromatic",MusicTitle="t+pazolite - Cheatreal",Music="Cheatreal"},
   {Name="Fracture",WingAnim="Fracture",MusicTitle="「Hard NRG」[Yooh] Backwards - cold kiss sound",Music="Hard NRG"},
   {Name="Kronos",WingAnim="Kronos",MusicTitle="Camellia - Body F10ating in the Zero Gravity Space",Music="Zero Grav"},
-  {Name="E q u i n o x",WingAnim="Equinox",MusicTitle="Sols rng - Equinox",Music="EQUINOX"},
+  {Name="E q u i n o x",WingAnim="Equinox",MusicTitle="Sols rng - Equinox",Music="POSTERBOY"},
   {Name="Mayhem - No Hope",WingAnim="Mayhem2",MusicTitle="Team Grimoire - Kathastrophe",Music="Kathastrophe"},
   {Name="Shard Surfer",WingAnim="Shard",MusicTitle="Tidal Wave - Shiawase (VIP Remix)",Music="Shiawase"},
   {Name="Luminosity",WingAnim="Luminosity",MusicTitle="t+pazolite & Getty - Twisted Drop Party - HARDCORE TANOC",Music="TANOC"},
