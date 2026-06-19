@@ -47,7 +47,7 @@ Global.GetLoadLibrary = function()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/Gelatekussy/GelatekHub/main/src/lib/LoadLibrary.lua"))()
 end
 Global.StopScript = function()
-	if game:GetService("Players").LocalPlayer.Character.Name ~= "GelatekReanimate" then
+	if game:GetService("Players").LocalPlayer.Character.Name ~= "MoonConvertRealChar" then
         Notification("Not Reanimated")
 		error("Not Reanimated")
 	end
