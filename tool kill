@@ -189,7 +189,7 @@ GetTargetTool.Parent = game.Players.LocalPlayer.Backpack
 local function notif(str,dur)
 
 	game:GetService("StarterGui"):SetCore("SendNotification", { 
-    Title = "Modded By Theo";
+    Title = "Modded By kyboxey";
     Text = str;})
 Duration = dur or 3;
 wait(1.550)
