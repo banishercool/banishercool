@@ -1,0 +1,439 @@
+local player = game:GetService("Players").LocalPlayer
+local Players = game:GetService("Players")
+local UserInputService = game:GetService("UserInputService")
+local LocalPlayer = Players.LocalPlayer
+local lp = game:GetService("Players").LocalPlayer
+ local Haha = " ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
+local function gplr(String)
+	local Found = {}
+	local strl = String:lower()
+	if strl == "all" then
+		for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+			table.insert(Found,v)
+		end
+	elseif strl == "others" then
+		for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+			if v.Name ~= lp.Name then
+				table.insert(Found,v)
+			end
+		end 
+	elseif strl == "me" then
+		for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+			if v.Name == lp.Name then
+				table.insert(Found,v)
+			end
+		end 
+	else
+		for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+			if v.Name:lower():sub(1, #String) == String:lower() then
+				table.insert(Found,v)
+			end
+		end 
+	end
+	return Found 
+end
+local CGui = game:GetService("CoreGui")
+if CGui:FindFirstChild("Kill") then
+    CGui.Kill:Destroy()
+end
+local DGui = game:GetService("CoreGui")
+if DGui:FindFirstChild("Dupe") then
+    DGui.Dupe:Destroy()
+end
+local ScreenGui = Instance.new("ScreenGui", CGui)
+ScreenGui.Name ="Kill"
+
+local ui = Instance.new("Frame")
+local title = Instance.new("TextLabel")
+local Frame = Instance.new("Frame")
+local Username = Instance.new("TextBox")
+local Kill = Instance.new("TextButton")
+local ced = Instance.new("TextLabel")
+
+ScreenGui.Parent = game:GetService("CoreGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+ui.Name = "ui"
+ui.Parent = ScreenGui
+ui.Active = true
+ui.BackgroundColor3 = Color3.new(0, 0, 0)
+ui.BackgroundTransparency = 0
+ui.BorderSizePixel = 3
+ui.Position = UDim2.new(0.254972845, 0, 0.419703096, 0)
+ui.Size = UDim2.new(0, 200, 0, 200)
+
+title.Name = "title"
+title.Parent = ui
+title.BackgroundColor3 = Color3.new(68, 68, 68)
+title.BackgroundTransparency = 1
+title.BorderSizePixel = 2
+title.Position = UDim2.new(0, 0, 0.0199999996, 0)
+title.Size = UDim2.new(1, 0, 0, 50)
+title.Font = Enum.Font.Sarpanch
+title.Text = "Sabotage"
+title.TextColor3 = Color3.new(1, 1, 1)
+title.TextScaled = true
+title.TextSize = 14
+title.TextWrapped = true
+
+Frame.Parent = title
+Frame.BackgroundColor3 = Color3.new(0, 0, 0)
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0.07, 0, 0.860000014, 0)
+Frame.Size = UDim2.new(0.85, 0, 0, 6)
+
+Username.Name = "F20 FR"
+Username.Parent = ui
+Username.BackgroundColor3 = Color3.new(1, 1, 1)
+Username.BorderSizePixel = 0
+Username.Position = UDim2.new(0.100000001, 0, 0.300000012, 0)
+Username.Size = UDim2.new(0.800000012, 0, 0, 50)
+Username.Font = Enum.Font.Sarpanch
+Username.PlaceholderText = "Username"
+Username.Text = "Username"
+Username.TextColor3 = Color3.new(0, 0, 0)
+Username.TextScaled = true
+Username.TextSize = 14
+Username.TextWrapped = true
+
+Kill.Name = "Stick"
+Kill.Parent = ui
+Kill.BackgroundColor3 = Color3.new(0.25, 0.25, 0.25)
+Kill.BackgroundTransparency = 0
+Kill.BorderSizePixel = 2
+Kill.Position = UDim2.new(0.25, 0, 0.629999971, 0)
+Kill.Size = UDim2.new(0.5, 0, 0, 45)
+Kill.Font = Enum.Font.Sarpanch
+Kill.Text = "Kill"
+Kill.TextColor3 = Color3.new(0, 0, 0)
+Kill.TextScaled = true
+Kill.TextSize = 10
+Kill.TextWrapped = true
+ui.Draggable = true
+
+ced.Name = "made"
+ced.Parent = ui
+ced.BackgroundColor3 = Color3.new(68, 68, 68)
+ced.BackgroundTransparency = 1
+ced.BorderSizePixel = 2
+ced.Position = UDim2.new(0, 0, 0.769999981, 0)
+ced.Size = UDim2.new(1, 0, 0, 50)
+ced.Font = Enum.Font.Sarpanch
+ced.Text = "Modded By Theo"
+ced.TextColor3 = Color3.new(1, 1, 1)
+ced.TextScaled = true
+ced.TextSize = 14
+ced.TextWrapped = true
+wait(1)
+local ScrollingFrame = Instance.new("ScrollingFrame")
+ScrollingFrame.Size = UDim2.new(1, -10, 1.19, -70)
+ScrollingFrame.Position = UDim2.new(0, 200, 0, 35)
+ScrollingFrame.CanvasSize = UDim2.new(0, 0, 5, 0)
+ScrollingFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+ScrollingFrame.Parent = ui
+local UIListLayout = Instance.new("UIListLayout")
+UIListLayout.Parent = ScrollingFrame
+UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+-- Update player list function
+local function updatePlayerList()
+    for _, child in pairs(ScrollingFrame:GetChildren()) do
+        if child:IsA("TextButton") then
+            child:Destroy()
+        end
+    end
+    for _, player in pairs(Players:GetPlayers()) do
+        if player ~= LocalPlayer then
+            local PlayerButton = Instance.new("TextButton")
+            PlayerButton.Size = UDim2.new(1, 0, 0, 25)
+            PlayerButton.Text = player.Name
+            PlayerButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+            PlayerButton.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+            PlayerButton.Font = Enum.Font.Sarpanch
+            PlayerButton.TextSize = 12
+            PlayerButton.Parent = ScrollingFrame
+            
+            PlayerButton.MouseButton1Click:Connect(function()
+                Username.Text = player.Name
+            end)
+        end
+    end
+end
+Players.PlayerAdded:Connect(updatePlayerList)
+Players.PlayerRemoving:Connect(updatePlayerList)
+updatePlayerList()
+
+
+
+local GetTargetTool = Instance.new("Tool")
+	GetTargetTool.Name = "ClickTarget"
+	GetTargetTool.RequiresHandle = false
+	GetTargetTool.TextureId = "rbxassetid://2716591855"
+	GetTargetTool.ToolTip = "Select Target"
+GetTargetTool.Parent = game.Players.LocalPlayer.Backpack
+	GetTargetTool.Activated:Connect(function()
+		local root = GetRoot(lp)
+		local hit = mouse.Target
+		local person = nil
+		if hit and hit.Parent then
+			if hit.Parent:IsA("Model") then
+				person = game.Players:GetPlayerFromCharacter(hit.Parent)
+			elseif hit.Parent:IsA("Accessory") then
+				person = game.Players:GetPlayerFromCharacter(hit.Parent.Parent)
+			end
+			if person then
+				Username.Text = person
+			end
+		end
+	end)
+
+local function notif(str,dur)
+
+	game:GetService("StarterGui"):SetCore("SendNotification", { 
+    Title = "Modded By Theo";
+    Text = str;})
+Duration = dur or 3;
+wait(1.550)
+game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync("-re "..tostring(Haha))
+wait(.1)
+--game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync("-rs "..tostring(Haha))
+end
+Kill.MouseButton1Click:Connect(function()
+	local Player = gplr(Username.Text)
+	if Player[1] then
+		Player = Player[1]
+          LocalPlayer = game.Players.LocalPlayer
+game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync("")
+         for loop3 = 0,1,1 do
+_G.Killed = false
+if _G.Killed == true then return end
+         if LocalPlayer.Character.PrimaryPart ~= nil then
+                local Character = LocalPlayer.Character
+                local previous = LocalPlayer.Character.PrimaryPart.CFrame
+                
+                Character.Archivable = true
+                local Clone = Character:Clone()
+                LocalPlayer.Character = Clone
+                wait(.1)
+                LocalPlayer.Character = Character
+                wait(.1)
+                
+                if LocalPlayer.Character and Player.Character and Player.Character.PrimaryPart ~= nil then
+                    if LocalPlayer.Character:FindFirstChildOfClass("Humanoid") then
+                        LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):Destroy()
+                    end
+    
+                    local Humanoid = Instance.new("Humanoid")
+                    Humanoid.Parent = LocalPlayer.Character
+    
+                    local Tool = nil
+    
+                    if LocalPlayer.Character:FindFirstChildOfClass("Tool") then
+                        Tool = LocalPlayer.Character:FindFirstChildOfClass("Tool")
+                    elseif LocalPlayer.Backpack and LocalPlayer.Backpack:FindFirstChildOfClass("Tool") then
+                        Tool = LocalPlayer.Backpack:FindFirstChildOfClass("Tool")
+                    end
+                    print(Tool)
+                   
+                    if Tool ~= nil then
+                        Tool.Parent = LocalPlayer.Backpack
+                        
+                        Player.Character.HumanoidRootPart.Anchored = true
+                        
+                        local Arm = game.Players.LocalPlayer.Character['Right Arm'].CFrame * CFrame.new(0, -1, 0, 1, 0, 0, 0, 0, 1, 0, -1, 0)
+                        Tool.Grip = Arm:ToObjectSpace(Player.Character.PrimaryPart.CFrame):Inverse()
+                        
+                        Tool.Parent = LocalPlayer.Character
+                        Workspace.CurrentCamera.CameraSubject = Tool.Handle
+              
+                        repeat
+                            wait()
+                        until not Tool or Tool and (Tool.Parent == Workspace or Tool.Parent == Player.Character)
+                        Player.Character.HumanoidRootPart.Anchored = false
+                        wait(.12)
+                        Humanoid.Health = 0
+                        LocalPlayer.Character = nil
+wait(.35)
+game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync("-rs "..tostring(Haha))
+                    end
+                end
+  
+                spawn(function()
+                LocalPlayer.CharacterAdded:Wait()
+                Player.Character.HumanoidRootPart.Anchored = false
+                if Player.Character.Humanoid.Health <= 15 then
+                 notif("The requested user has been killed!")
+_G.Killed = true 
+game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync("")
+                repeat wait() until LocalPlayer.Character.PrimaryPart ~= nil
+                wait(.5)        
+if Player.Character.Humanoid.Health >= 15 then
+wait(.55)
+game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync("-rs "..tostring(Haha))      
+LocalPlayer.Character:SetPrimaryPartCFrame(previous)
+LocalPlayer.Character:SetPrimaryPartCFrame(previous)
+end
+              end
+                end)
+      wait(1.50)
+end
+       end
+    end
+
+end)
+ 
+
+
+-- HackFrame.RGB_Script 
+	local script = Instance.new('LocalScript', Kill)
+	
+	while wait() do
+		script.Parent.BackgroundColor3 = Color3.new(255/255,0/255,0/255)
+		for i = 0,255,10 do
+			wait()
+			script.Parent.BackgroundColor3 = Color3.new(255/255,i/255,0/255)
+		end
+		for i = 255,0,-10 do
+			wait()
+			script.Parent.BackgroundColor3 = Color3.new(i/255,255/255,0/255)
+		end
+		for i = 0,255,10 do
+			wait()
+			script.Parent.BackgroundColor3 = Color3.new(0/255,255/255,i/255)
+		end
+		for i = 255,0,-10 do
+			wait()
+			script.Parent.BackgroundColor3 = Color3.new(0/255,i/255,255/255)
+		end
+		for i = 0,255,10 do
+			wait()
+			script.Parent.BackgroundColor3 = Color3.new(i/255,0/255,255/255)
+		end
+		for i = 255,0,-10 do
+			wait()
+			script.Parent.BackgroundColor3 = Color3.new(255/255,0/255,i/255)
+		end
+	end
+
+ -- HackFrame.RGB_Script 
+	local script2 = Instance.new('LocalScript', title)
+	
+	while wait() do
+		script2.Parent.TextColor3 = Color3.new(255/255,0/255,0/255)
+		for i = 0,255,10 do
+			wait()
+			script2.Parent.TextColor3 = Color3.new(255/255,i/255,0/255)
+		end
+		for i = 255,0,-10 do
+			wait()
+			script2.Parent.TextColor3 = Color3.new(i/255,255/255,0/255)
+		end
+		for i = 0,255,10 do
+			wait()
+			script2.Parent.TextColor3 = Color3.new(0/255,255/255,i/255)
+		end
+		for i = 255,0,-10 do
+			wait()
+			script2.Parent.TextColor3 = Color3.new(0/255,i/255,255/255)
+		end
+		for i = 0,255,10 do
+			wait()
+			script2.Parent.TextColor3 = Color3.new(i/255,0/255,255/255)
+		end
+		for i = 255,0,-10 do
+			wait()
+			script2.Parent.TextColor3 = Color3.new(255/255,0/255,i/255)
+		end
+	end
+
+ -- HackFrame.RGB_Script 
+	local script3 = Instance.new('LocalScript', Frame)
+	
+	while wait() do
+		script3.Parent.BackgroundColor3 = Color3.new(255/255,0/255,0/255)
+		for i = 0,255,10 do
+			wait()
+			script3.Parent.BackgroundColor3 = Color3.new(255/255,i/255,0/255)
+		end
+		for i = 255,0,-10 do
+			wait()
+			script3.Parent.BackgroundColor3 = Color3.new(i/255,255/255,0/255)
+		end
+		for i = 0,255,10 do
+			wait()
+			script3.Parent.BackgroundColor3 = Color3.new(0/255,255/255,i/255)
+		end
+		for i = 255,0,-10 do
+			wait()
+			script3.Parent.BackgroundColor3 = Color3.new(0/255,i/255,255/255)
+		end
+		for i = 0,255,10 do
+			wait()
+			script3.Parent.BackgroundColor3 = Color3.new(i/255,0/255,255/255)
+		end
+		for i = 255,0,-10 do
+			wait()
+			script3.Parent.BackgroundColor3 = Color3.new(255/255,0/255,i/255)
+		end
+	end
+
+-- HackFrame.RGB_Script 
+	local script4 = Instance.new('LocalScript', Frame)
+	
+	while wait() do
+		script4.Parent.BackgroundColor3 = Color3.new(255/255,0/255,0/255)
+		for i = 0,255,10 do
+			wait()
+			script4.Parent.BackgroundColor3 = Color3.new(255/255,i/255,0/255)
+		end
+		for i = 255,0,-10 do
+			wait()
+			script4.Parent.BackgroundColor3 = Color3.new(i/255,255/255,0/255)
+		end
+		for i = 0,255,10 do
+			wait()
+			script4.Parent.BackgroundColor3 = Color3.new(0/255,255/255,i/255)
+		end
+		for i = 255,0,-10 do
+			wait()
+			script4.Parent.BackgroundColor3 = Color3.new(0/255,i/255,255/255)
+		end
+		for i = 0,255,10 do
+			wait()
+			script4.Parent.BackgroundColor3 = Color3.new(i/255,0/255,255/255)
+		end
+		for i = 255,0,-10 do
+			wait()
+			script4.Parent.BackgroundColor3 = Color3.new(255/255,0/255,i/255)
+		end
+	end
+
+-- HackFrame.RGB_Script 
+	local script5 = Instance.new('LocalScript', ced)
+	
+	while wait() do
+		script5.Parent.TextColor3 = Color3.new(255/255,0/255,0/255)
+		for i = 0,255,10 do
+			wait()
+			script5.Parent.TextColor3 = Color3.new(255/255,i/255,0/255)
+		end
+		for i = 255,0,-10 do
+			wait()
+			script5.Parent.TextColor3 = Color3.new(i/255,255/255,0/255)
+		end
+		for i = 0,255,10 do
+			wait()
+			script5.Parent.TextColor3 = Color3.new(0/255,255/255,i/255)
+		end
+		for i = 255,0,-10 do
+		wait()
+			script5.Parent.TextColor3 = Color3.new(0/255,i/255,255/255)
+		end
+		for i = 0,255,10 do
+			wait()
+			script5.Parent.TextColor3 = Color3.new(i/255,0/255,255/255)
+		end
+		for i = 255,0,-10 do
+			wait()
+			script5.Parent.TextColor3 = Color3.new(255/255,0/255,i/255)
+		end
+	end
