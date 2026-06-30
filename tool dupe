@@ -41,7 +41,7 @@ if DGui:FindFirstChild("Dupe") then
     DGui.Dupe:Destroy()
 end
 local ScreenGui = Instance.new("ScreenGui", CGui)
-ScreenGui.Name ="Kill"
+ScreenGui.Name ="Dupe"
 
 local ui = Instance.new("Frame")
 local title = Instance.new("TextLabel")
@@ -70,7 +70,7 @@ title.BorderSizePixel = 2
 title.Position = UDim2.new(0, 0, 0.0199999996, 0)
 title.Size = UDim2.new(1, 0, 0, 50)
 title.Font = Enum.Font.Sarpanch
-title.Text = "Sabotage"
+title.Text = "Tool Dupe"
 title.TextColor3 = Color3.new(1, 1, 1)
 title.TextScaled = true
 title.TextSize = 14
