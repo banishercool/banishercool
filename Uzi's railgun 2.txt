@@ -18,15 +18,15 @@ another hat to use is the star slayer rail gun: https://web.roblox.com/catalog/4
 
 wait(1)
 game.StarterGui:SetCore("SendNotification", {
-    Title = "Hello Edits: Info";
-    Text = "Leaked by Kass";
+    Title = "Sky notifys you!";
+    Text = "This script have mp3, it can download anyway";
     Duration = "8";
 })
 warn("[Hello Edits] Leaked by Kass")
 wait(1)
 game.StarterGui:SetCore("SendNotification", {
-    Title = "Hello Edits: Edit";
-    Text = "Edited by Hello Edits (Discord : discord.gg/XgQtumaqH9)";
+    Title = "Sky notifys you!";
+    Text = "Loaded :3";
     Duration = "9";
 })
 warn("Edited by Hello Edits (Discord : discord.gg/XgQtumaqH9)")
