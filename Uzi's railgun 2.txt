@@ -1,5 +1,5 @@
 game.ReplicatedStorage["01_server"]:FireServer("cmd", "-gh 78442427220194")
-task.wait(0.3)
+task.wait(0.01)
 writefile("bloodwater.mp3", game:HttpGet("https://github.com/banishercool/banishercool/raw/refs/heads/main/bloodwater.mp3"))
 writefile("never.mp3", game:HttpGet("https://github.com/banishercool/banishercool/raw/refs/heads/main/never.mp3"))
 writefile("converter.mp3", game:HttpGet("https://github.com/banishercool/banishercool/raw/refs/heads/main/converter.mp3"))
@@ -15,15 +15,15 @@ another hat to use is the star slayer rail gun: https://web.roblox.com/catalog/4
 
 wait(1)
 game.StarterGui:SetCore("SendNotification", {
-    Title = "Hello Edits: Info";
-    Text = "Leaked by Kass";
+    Title = "sky notifys you";
+    Text = "This script has mp3, it can download mp3 first.";
     Duration = "8";
 })
 warn("[Hello Edits] Leaked by Kass")
 wait(1)
 game.StarterGui:SetCore("SendNotification", {
-    Title = "Hello Edits: Edit";
-    Text = "Edited by Hello Edits (Discord : discord.gg/XgQtumaqH9)";
+    Title = "sky notifys you";
+    Text = "Loaded!";
     Duration = "9";
 })
 warn("Edited by Hello Edits (Discord : discord.gg/XgQtumaqH9)")
