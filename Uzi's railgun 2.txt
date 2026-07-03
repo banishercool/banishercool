@@ -1,8 +1,11 @@
 game.ReplicatedStorage["01_server"]:FireServer("cmd", "-gh 78442427220194")
-task.wait(0.01)
+task.wait(0.3)
 writefile("bloodwater.mp3", game:HttpGet("https://github.com/banishercool/banishercool/raw/refs/heads/main/bloodwater.mp3"))
 writefile("never.mp3", game:HttpGet("https://github.com/banishercool/banishercool/raw/refs/heads/main/never.mp3"))
 writefile("converter.mp3", game:HttpGet("https://github.com/banishercool/banishercool/raw/refs/heads/main/converter.mp3"))
+writefile("Recharge.mp3", game:HttpGet("https://github.com/banishercool/banishercool/raw/refs/heads/main/Recharge.mp3"))
+writefile("nero's day.mp3", game:HttpGet("https://github.com/banishercool/banishercool/raw/refs/heads/main/nero's%20day.mp3"))
+writefile("leak.mp3", game:HttpGet("https://github.com/banishercool/banishercool/raw/refs/heads/main/leak.mp3"))
 --[[ 
 
 Leaked by Kass
@@ -15,15 +18,15 @@ another hat to use is the star slayer rail gun: https://web.roblox.com/catalog/4
 
 wait(1)
 game.StarterGui:SetCore("SendNotification", {
-    Title = "sky notifys you";
-    Text = "This script has mp3, it can download mp3 first.";
+    Title = "Hello Edits: Info";
+    Text = "Leaked by Kass";
     Duration = "8";
 })
 warn("[Hello Edits] Leaked by Kass")
 wait(1)
 game.StarterGui:SetCore("SendNotification", {
-    Title = "sky notifys you";
-    Text = "Loaded!";
+    Title = "Hello Edits: Edit";
+    Text = "Edited by Hello Edits (Discord : discord.gg/XgQtumaqH9)";
     Duration = "9";
 })
 warn("Edited by Hello Edits (Discord : discord.gg/XgQtumaqH9)")
@@ -1048,8 +1051,7 @@ function secret()
 tecks2.Font = "Legacy"
 deez = "Yume - Lotus Waters"
 chatfunc("ceat's gone, my mind left drifting...")
-	sick.SoundId = "rbxassetid://4550046224"
- gettheboomboxsong()
+	sick.SoundId = getcustomasset("leak.mp3")
 	sick.Volume = 10
  Speed = 16
 	sick.PlaybackSpeed = 0.55
@@ -1094,8 +1096,7 @@ tecks2.Text = "Lost Echoes"
 tecks2.Font = "SpecialElite"
  Speed = 16
 
-	sick.SoundId = "rbxassetid://4185475912"
- gettheboomboxsong()
+	sick.SoundId = getcustomasset("nero's day.mp3")
 	sick.Volume = 10
 	sick.PlaybackSpeed = 0.87
 	--sick:Play()
@@ -1139,8 +1140,7 @@ tecks2.Font = "SciFi"
 deez = "Diabarha - Recharge"
 chatfunc("Show me a good time, Ascensionist!")
 
-	sick.SoundId = "rbxassetid://7371938004"
- gettheboomboxsong()
+	sick.SoundId = getcustomasset("Recharge.mp3")
 	sick.Volume = 5
 	sick.PlaybackSpeed = 0.8
  Speed = 16
