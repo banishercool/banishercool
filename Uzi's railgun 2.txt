@@ -6,6 +6,14 @@ writefile("converter.mp3", game:HttpGet("https://github.com/banishercool/banishe
 writefile("Recharge.mp3", game:HttpGet("https://github.com/banishercool/banishercool/raw/refs/heads/main/Recharge.mp3"))
 writefile("nero's day.mp3", game:HttpGet("https://github.com/banishercool/banishercool/raw/refs/heads/main/nero's%20day.mp3"))
 writefile("leak.mp3", game:HttpGet("https://github.com/banishercool/banishercool/raw/refs/heads/main/leak.mp3"))
+writefile("sniper.mp3", game:HttpGet("https://github.com/banishercool/banishercool/raw/refs/heads/main/sniper.mp3"))
+writefile("scourge.mp3", game:HttpGet("https://github.com/banishercool/banishercool/raw/refs/heads/main/scourge.mp3"))
+writefile("karma.mp3", game:HttpGet("https://github.com/banishercool/banishercool/raw/refs/heads/main/karma.mp3"))
+writefile("Wet As.mp3", game:HttpGet("https://github.com/banishercool/banishercool/raw/refs/heads/main/Wet%20As.mp3"))
+writefile("Dead Zone.mp3", game:HttpGet("https://github.com/banishercool/banishercool/raw/refs/heads/main/Dead%20Zone.mp3"))
+writefile("Dancin.mp3", game:HttpGet("https://github.com/banishercool/banishercool/raw/refs/heads/main/Dancin.mp3"))
+writefile("13.mp3", game:HttpGet("https://github.com/banishercool/banishercool/raw/refs/heads/main/13.mp3"))
+writefile("Begging.mp3", game:HttpGet("https://github.com/banishercool/banishercool/raw/refs/heads/main/Begging.mp3"))
 --[[ 
 
 Leaked by Kass
@@ -18,15 +26,15 @@ another hat to use is the star slayer rail gun: https://web.roblox.com/catalog/4
 
 wait(1)
 game.StarterGui:SetCore("SendNotification", {
-    Title = "Sky notifys you!";
-    Text = "This script have mp3, it can download anyway";
+    Title = "Hello Edits: Info";
+    Text = "Leaked by Kass";
     Duration = "8";
 })
 warn("[Hello Edits] Leaked by Kass")
 wait(1)
 game.StarterGui:SetCore("SendNotification", {
-    Title = "Sky notifys you!";
-    Text = "Loaded :3";
+    Title = "Hello Edits: Edit";
+    Text = "Edited by Hello Edits (Discord : discord.gg/XgQtumaqH9)";
     Duration = "9";
 })
 warn("Edited by Hello Edits (Discord : discord.gg/XgQtumaqH9)")
@@ -113,7 +121,7 @@ for i,v in next, game:GetService("Players").LocalPlayer.Character:GetDescendants
 	
 	bullet = workspace[plr.Name]["HumanoidRootPart"]
 	bullet.Transparency = 0.6
-bullet.BrickColor = BrickColor.new("Really red")
+bullet.BrickColor = BrickColor.new("Blue")
 bullet.Material = "Neon"
 	bhandle = bullet
 	bullet.Massless = true
@@ -286,7 +294,7 @@ FLOOR = math.floor
 --|| 	      USEFUL VALUES
 --\\=================================//
 
-Animation_Speed = 1.8
+Animation_Speed = 3.8
 local FORCERESET = false
 Frame_Speed = 1 / 60
 local Speed = 16
@@ -1275,7 +1283,7 @@ tecks2.Font = "Garamond"
 deez = "COMBUSTIBLE EDISON - The Millionaire's Holiday"
 chatfunc("It's a bloody Christmas miracle!")
  
-	sick.SoundId = 'rbxassetid://3470664791'
+	sick.SoundId = getcustomasset("sniper.mp3")
  gettheboomboxsong()
 	sick.Volume = 10
 	sick.PlaybackSpeed = 1
@@ -1543,8 +1551,7 @@ tecks2.Font = "Code"
 deez = "Diabarha - Dead Zone"
 chatfunc("How pityful, Descensionist...")
 
-	sick.SoundId = "rbxassetid://7576995029"
- gettheboomboxsong()
+	sick.SoundId = getcustomasset("Dead Zone.mp3")
 	sick.Volume = 10
 	sick.PlaybackSpeed = 0.8
  Speed = 16
@@ -2359,8 +2366,7 @@ function drifter()
 tecks2.Font = "Code"
 chatfunc("Hello.")
 deez = "cycerin - Wet Asphalt"
-	sick.SoundId = "rbxassetid://4260724907"
- gettheboomboxsong()
+	sick.SoundId = getcustomasset("Wet As.mp3")
 	sick.Volume = 10
 	sick.PlaybackSpeed = 1
 	sick.Pitch = 1
@@ -2407,8 +2413,7 @@ function exodim()
 tecks2.Font = "Code"
 deez = "Scourge of the Universe"
 chatfunc("FACE MY RIGHTEOUS FURY!")
-	sick.SoundId = "rbxassetid://6932140332"
- gettheboomboxsong()
+	sick.SoundId = getcustomasset("scourge.mp3")
 	sick.Volume = 10
 	sick.PlaybackSpeed = 1
 	sick.Pitch = 1
@@ -2453,10 +2458,9 @@ function french()
 	MODE = "perfectnothing"
 	tecks2.Text = "Coup d'État"
 tecks2.Font = "Antique"
-deez = "Unknown Author - Perfect Nothing"
+deez = "Karma Song"
 chatfunc("Levez la main à tous, c'est un coup d'état!")
-	sick.SoundId = "rbxassetid://2663730937"
- gettheboomboxsong()
+	sick.SoundId = getcustomasset("karma.mp3")
 	sick.Volume = 10
 	sick.PlaybackSpeed = 1
 	sick.Pitch = 1
@@ -2503,8 +2507,7 @@ function switcher()
 tecks2.Font = "Code"
 deez = "Astronaut - 13"
 chatfunc("Shaking, oh my god, shaking...")
-	sick.SoundId = "rbxassetid://723652641"
- gettheboomboxsong()
+	sick.SoundId = getcustomasset("13.mp3")
 	sick.Volume = 10
 	sick.PlaybackSpeed = 1
 	sick.Pitch = 1
@@ -2649,8 +2652,7 @@ function dancin()
 tecks2.Font = "Legacy"
 deez = "Aaron Smith - Dancin'"
 chatfunc("[FE Immortality Lord V2]: mmm yes am bad edit made by skrulls and burger. free hats by HelloMyFrlen3")
-	sick.SoundId = "rbxassetid://5640628952"
- gettheboomboxsong()
+	sick.SoundId = getcustomasset("Dancin.mp3")
 	sick.Volume = 10
 	sick.PlaybackSpeed = 1
 	sick.Pitch = 1
@@ -2697,8 +2699,7 @@ function agenthitlerfbi()
 tecks2.Font = "Garamond"
 deez = "The Four Seasons - Beggin'"
 chatfunc("I'm proud of you, son.")
-	sick.SoundId = "rbxassetid://2059337471"
- gettheboomboxsong()
+	sick.SoundId = getcustomasset("Begging.mp3")
 	sick.Volume = 10
 	sick.PlaybackSpeed = 1
 	sick.Pitch = 0.8
