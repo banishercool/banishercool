@@ -1,7 +1,7 @@
 writefile("Slasher.mp3", game:HttpGet("https://github.com/banishercool/banishercool/raw/refs/heads/main/Slasher.mp3"))
 writefile("thebigblack.mp3", game:HttpGet("https://github.com/banishercool/banishercool/raw/refs/heads/main/thebigblack.mp3"))
 writefile("byby.mp3", game:HttpGet("https://github.com/banishercool/banishercool/raw/refs/heads/main/byby.mp3"))
-writefile("Remember_ma-.mp3", game:HttpGet("https://github.com/ian49972/smth/raw/refs/heads/main/Remember_ma-.mp3"))
+writefile("enrique.mp3", game:HttpGet("https://github.com/banishercool/banishercool/raw/refs/heads/main/enrique.mp3"))
 --amogus
 for i,v in next, game:GetService("Players").LocalPlayer.Character:GetDescendants() do
 if v:IsA("BasePart") and v.Name ~="HumanoidRootPart" then 
@@ -7775,7 +7775,7 @@ if k == "4" and attack == false then
       hum.WalkSpeed = 8
       Speed = 8
       kan.Pitch = 0.9
-      kan.SoundId = getcustomasset("Remember_ma-.mp3")
+      kan.SoundId = getcustomasset("enrique.mp3")
 		BanishMode = 5
 	end
 
